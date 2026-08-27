@@ -1,15 +1,25 @@
 #define led 3
 #define pot A0
+#define buzzer 8
 
 void setup() {
-  // put your setup code here, to run once:
+  pinMode(led,OUTPUT);
+  pinMode(buzzer,OUTPUT);
+  pinMode(pot,INPUT);
 
 }
 
 void loop() {
   int deger = analogRead(pot);
-  deger = deger/4;
+  int parlaklik = deger/4;
 
-  analogWrite(led,deger);
+  analogWrite(led,parlaklik);
+
+  if(deger>500){
+    digitalWrite(buzzer,HIGH);
+  }
+  else{
+    digitalWrite(buzzer,LOW);
+  }
 
 }
